@@ -11,5 +11,9 @@ module PuzzleMaker
     def generate
       self
     end
+
+    def selected_answers
+      []
+    end
   end
 end

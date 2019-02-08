@@ -1,8 +1,26 @@
 # PuzzleMaker
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/puzzle_maker`. To experiment with that code, run `bin/console` for an interactive prompt.
+Finds appropriate answers from list of provided answers which will match to the result of the puzzle.
+Let say that we have following list of answers:
 
-TODO: Delete this and the text above, and describe your gem
+[ CAR, GREEN, BUNDLER, RAILS, GSUB, YELLOW ]
+
+and result of puzzle is  RUBY
+
+then puzzle maker should return following list of answers
+
+[ CAR, BUNDLER, GSUB, YELLOW ]
+
+Which produce puzzle such:
+
+|   |   |   |   |   |   |   |   |   |   |
+|---|---|---|---|---|---|---|---|---|---|
+|   | C | A | **R** |   |   |   |   |   |
+|   |   | B | **U** | N | D | L | E | R |
+| G | S | U | **B** |   |   |   |   |   |
+|   |   |   | **Y** | E | L | L | O | W |
+
+
 
 ## Installation
 
@@ -22,13 +40,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+answers = %w[CAR GREEN BUNDLER RAILS GSUB YELLOW]
+result = 'RUBY'
+puzzle_maker = PuzzleMaker.new(answers: answers, result: result)
+puzzle_maker.create
+puzzle_maker.answer # gets the right answers
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```
 
 ## Contributing
 

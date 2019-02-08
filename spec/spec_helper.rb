@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "puzzle_maker"
+require "simple_crossword"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

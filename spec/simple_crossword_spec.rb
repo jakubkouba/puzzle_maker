@@ -20,5 +20,13 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         expect(selected_answers).to eq []
       end
     end
+
+    describe 'when result is "a" and list of available answers contains "a"' do
+      let(:available_answers) { ['a'] }
+
+      it 'returns list with word "a"' do
+        expect(selected_answers).to eq ['a']
+      end
+    end
   end
 end

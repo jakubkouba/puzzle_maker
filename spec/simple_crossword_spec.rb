@@ -17,12 +17,15 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
   end
 
   describe '#select_answers' do
-    subject(:select_answers) { simple_crossword_puzzle.select_answers }
+    let(:selected_answers) do
+      simple_crossword_puzzle.select_answers
+      simple_crossword_puzzle.selected_answers
+    end
 
     describe 'when result is empty and list of available answers is empty' do
 
       fit 'returns empty list' do
-        expect(select_answers).to eq []
+        expect(selected_answers).to eq []
 
       end
     end
@@ -31,7 +34,11 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
       let(:available_answers) { ['a'] }
 
       it 'returns list with one SelectedAnswer object' do
-        expect(select_answers.first).to be_an_instance_of PuzzleMaker::SelectedAnswer
+        expect(selected_answers.first).to be_an_instance_of PuzzleMaker::SelectedAnswer
+      end
+
+      it 'returns list with one SelectedAnswer object with property "word" containing "a"' do
+        expect(selected_answers.first.word).to eq 'a'
       end
     end
   end

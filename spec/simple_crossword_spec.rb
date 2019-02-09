@@ -40,6 +40,10 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
       it 'returns list with one SelectedAnswer object with property "word" containing "a"' do
         expect(selected_answers.first.word).to eq 'a'
       end
+
+      it 'returns list with one SelectedAnswer object with property "length" containing 1' do
+        expect(selected_answers.first.length).to eq 1
+      end
     end
   end
 end

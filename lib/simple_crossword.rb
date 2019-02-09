@@ -39,5 +39,9 @@ module PuzzleMaker
     def length
       @word.length
     end
+
+    def match_position
+      1
+    end
   end
 end

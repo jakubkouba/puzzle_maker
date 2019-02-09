@@ -23,8 +23,12 @@ module PuzzleMaker
         return @selected_answers
       end
 
-      @selected_answers = [available_answers.first] if available_answers.first.include? result
+      @selected_answers = [SelectedAnswer.new] if available_answers.first.include? result
       @selected_answers
     end
+  end
+
+  class SelectedAnswer
+
   end
 end

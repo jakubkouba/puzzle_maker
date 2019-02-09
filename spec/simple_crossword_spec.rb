@@ -24,7 +24,7 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
 
     describe 'when result is empty and list of available answers is empty' do
 
-      fit 'returns empty list' do
+      it 'returns empty list' do
         expect(selected_answers).to eq []
 
       end
@@ -32,6 +32,8 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
 
     describe 'when result is "a" and list of available answers contains "a"' do
       let(:available_answers) { ['a'] }
+      let(:result) { 'a' }
+
 
       it 'returns list with one SelectedAnswer object' do
         expect(selected_answers.first).to be_an_instance_of PuzzleMaker::SelectedAnswer
@@ -46,7 +48,16 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
       end
 
       it 'returns list with one SelectedAnswer object with "match_position" containing 1' do
-        expect(selected_answers.first.match_position).to eq 1
+        expect(selected_answers.first.matching_position).to eq 1
+      end
+    end
+
+    describe 'when result is "a" and list of available answers contains "ba"' do
+      let(:available_answers) { ['ba'] }
+      let(:result) { 'a' }
+
+      specify 'matching position of selected word is 2' do
+        expect(selected_answers.first.matching_position).to eq 2
       end
     end
   end

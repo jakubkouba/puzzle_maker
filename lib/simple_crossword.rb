@@ -23,25 +23,23 @@ module PuzzleMaker
         return @selected_answers
       end
 
-      @selected_answers = [SelectedAnswer.new(available_answers.first)] if available_answers.first.include? result
+      matching_positon = available_answers.first.index(result)
+      @selected_answers = [SelectedAnswer.new(available_answers.first, matching_positon)] if matching_positon
       @selected_answers
     end
   end
 
   class SelectedAnswer
 
-    attr_reader :word
+    attr_reader :word, :matching_position
 
-    def initialize(word)
+    def initialize(word, matching_position)
       @word = word
+      @matching_position = matching_position + 1
     end
 
     def length
       @word.length
-    end
-
-    def match_position
-      1
     end
   end
 end

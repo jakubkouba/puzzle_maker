@@ -9,15 +9,21 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
     it 'return self' do
       expect(generate).to eq simple_crossword_puzzle
     end
+
+    it 'populates selected answers' do
+      generate
+      expect(simple_crossword_puzzle.selected_answers).not_to be_nil
+    end
   end
 
-  describe '#selected_answers' do
-    subject(:selected_answers) { simple_crossword_puzzle.selected_answers }
+  describe '#select_answers' do
+    subject(:select_answers) { simple_crossword_puzzle.select_answers }
 
     describe 'when result is empty and list of available answers is empty' do
 
-      it 'returns empty list' do
-        expect(selected_answers).to eq []
+      fit 'returns empty list' do
+        expect(select_answers).to eq []
+
       end
     end
 
@@ -25,7 +31,7 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
       let(:available_answers) { ['a'] }
 
       it 'returns list with word "a"' do
-        expect(selected_answers).to eq ['a']
+        expect(select_answers).to eq ['a']
       end
     end
   end

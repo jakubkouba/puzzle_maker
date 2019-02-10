@@ -21,16 +21,16 @@ module PuzzleMaker
       @selected_answers = []
       return if available_answers.empty?
 
-      result_as_array.each do |letter_of_result|
+      result_letters.each do |letter|
         available_answers.each do |answer|
-          if answer.index(letter_of_result)
-            @selected_answers << SelectedAnswer.new(answer, letter_of_result)
+          if answer.include?(letter)
+            @selected_answers << SelectedAnswer.new(answer, letter)
             @available_answers = available_answers - [answer]
           end
         end
       end
 
-      raise SolutionNotFoundError if result_as_array.count != selected_answers.count
+      raise SolutionNotFoundError if result_letters.count != selected_answers.count
     end
 
     def width
@@ -39,7 +39,7 @@ module PuzzleMaker
       biggest_left_offset + biggest_right_offset + 1
     end
 
-    def result_as_array
+    def result_letters
       result.scan(/\w/)
     end
 

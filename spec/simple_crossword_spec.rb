@@ -64,7 +64,14 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         specify 'matching position is of selected answer is 2' do
           expect(selected_answers.first.matching_position).to eq 2
         end
+      end
 
+      describe 'list of available answers is [ "bb", "ba" ]' do
+        let(:available_answers) { ['bb', 'ba'] }
+
+        specify 'selected answers will contain answer "ba"' do
+          expect(selected_answers.map(&:word)).to include 'ba'
+        end
       end
     end
   end

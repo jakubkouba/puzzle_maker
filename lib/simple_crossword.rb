@@ -23,8 +23,12 @@ module PuzzleMaker
         return @selected_answers
       end
 
-      matching_positon = available_answers.first.index(result)
-      @selected_answers = [SelectedAnswer.new(available_answers.first, matching_positon)] if matching_positon
+      available_answers.each do |answer|
+        matching_position = answer.index(result)
+        if matching_position
+          @selected_answers = [SelectedAnswer.new(answer, matching_position)]
+        end
+      end
       @selected_answers
     end
   end

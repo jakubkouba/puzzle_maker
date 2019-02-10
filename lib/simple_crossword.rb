@@ -23,15 +23,17 @@ module PuzzleMaker
         return @selected_answers
       end
 
-      available_answers.each do |answer|
-        matching_position = answer.index(result)
-        if matching_position
-          @selected_answers = [SelectedAnswer.new(answer, matching_position)]
-          @available_answers = available_answers - [answer]
+      @selected_answers = []
+      result.scan(/\w/).each do |letter_of_result|
+        available_answers.each do |answer|
+          if matching_position = answer.index(letter_of_result)
+            @selected_answers << SelectedAnswer.new(answer, matching_position)
+            @available_answers = available_answers - [answer]
+          end
         end
       end
 
-      @selected_answers ||= []
+      selected_answers
     end
   end
 

@@ -88,5 +88,17 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         end
       end
     end
+
+    describe 'result is "ab"' do
+      let(:result) { 'ab' }
+
+      describe 'list of available answers is ["ac", "cb"]' do
+        let(:available_answers) { ['ac', 'cb'] }
+
+        specify 'selected answers contain "ac" and "cb"' do
+          expect(selected_answers.map(&:word)).to match_array(['ac', 'cb'])
+        end
+      end
+    end
   end
 end

@@ -57,7 +57,7 @@ module PuzzleMaker
     end
 
     def left_offset
-      0
+      word.index(matching_letter)
     end
 
   end

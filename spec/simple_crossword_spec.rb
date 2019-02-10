@@ -131,5 +131,12 @@ RSpec.describe PuzzleMaker::SelectedAnswer do
 
       it { is_expected.to eq 0 }
     end
+
+    context 'when word is "ba" and matching letter is "a"' do
+      let(:word) { 'ba' }
+      let(:matching_letter) { 'a' }
+
+      it { is_expected.to eq 1 }
+    end
   end
 end

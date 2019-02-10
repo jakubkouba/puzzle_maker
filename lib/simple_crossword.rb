@@ -21,7 +21,7 @@ module PuzzleMaker
       @selected_answers = []
       return if available_answers.empty?
 
-      result.scan(/\w/).each do |letter_of_result|
+      result_as_array.each do |letter_of_result|
         available_answers.each do |answer|
           if matching_position = answer.index(letter_of_result)
             @selected_answers << SelectedAnswer.new(answer, matching_position)
@@ -30,7 +30,11 @@ module PuzzleMaker
         end
       end
 
-      raise SolutionNotFoundError if result.scan(/\w/).count != selected_answers.count
+      raise SolutionNotFoundError if result_as_array.count != selected_answers.count
+    end
+
+    def result_as_array
+      result.scan(/\w/)
     end
 
   end

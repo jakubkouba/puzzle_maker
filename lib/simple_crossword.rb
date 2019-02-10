@@ -34,7 +34,9 @@ module PuzzleMaker
     end
 
     def width
-      1
+      biggest_left_offset = selected_answers.map(&:left_offset).max
+      biggest_right_offset = selected_answers.map(&:right_offset).max
+      biggest_left_offset + biggest_right_offset + 1
     end
 
     def result_as_array

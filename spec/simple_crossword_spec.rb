@@ -87,7 +87,10 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
   end
 
   describe '#width' do
-    subject(:width) { simple_crossword_puzzle.width }
+    subject(:width) do
+      simple_crossword_puzzle.generate
+      simple_crossword_puzzle.width
+    end
 
     describe 'when result is "ab"' do
       let(:result) { 'ab' }
@@ -101,10 +104,10 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         end
       end
 
-      describe 'list of answer is [ "aa", "cb"]' do
-        let(:available_answers) { ['aa', 'cb'] }
+      describe 'list of answer is [ "ab", "cb"]' do
+        let(:available_answers) { ['ab', 'cb'] }
 
-        xit { is_expected.to eq 3 }
+        it { is_expected.to eq 3 }
       end
     end
   end

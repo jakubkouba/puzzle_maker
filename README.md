@@ -43,9 +43,9 @@ Or install it yourself as:
 ```ruby
 answers = %w[CAR GREEN BUNDLER RAILS GSUB YELLOW]
 result = 'RUBY'
-puzzle_maker = PuzzleMaker.new(answers: answers, result: result)
-puzzle_maker.create
-puzzle_maker.answer # gets the right answers
+puzzle_maker = PuzzleMaker.new(result: result, available_answers: answers)
+puzzle_maker.generate
+answers = puzzle_maker.selected_answers
 
 ```
 

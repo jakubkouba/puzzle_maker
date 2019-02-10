@@ -139,4 +139,15 @@ RSpec.describe PuzzleMaker::SelectedAnswer do
       it { is_expected.to eq 1 }
     end
   end
+  
+  describe '#rigth_offset' do
+    subject(:right_offset) { selected_answer.right_offset }
+
+    context 'when word is "a" and matching letter is "a"' do
+      let(:word) { 'a' }
+      let(:matching_letter) { 'a' }
+
+      it { is_expected.to eq 0 }
+    end
+  end
 end

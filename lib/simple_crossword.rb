@@ -60,6 +60,10 @@ module PuzzleMaker
       word.index(matching_letter)
     end
 
+    def right_offset
+      0
+    end
+
   end
 
   class SolutionNotFoundError < StandardError; end

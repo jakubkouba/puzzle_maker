@@ -27,6 +27,7 @@ module PuzzleMaker
         matching_position = answer.index(result)
         if matching_position
           @selected_answers = [SelectedAnswer.new(answer, matching_position)]
+          @available_answers = available_answers - [answer]
         end
       end
       @selected_answers

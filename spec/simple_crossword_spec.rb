@@ -17,8 +17,10 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
   end
 
   describe '#select_answers' do
+    subject(:select_answers) { simple_crossword_puzzle.select_answers }
+
     let(:selected_answers) do
-      simple_crossword_puzzle.select_answers
+      select_answers
       simple_crossword_puzzle.selected_answers
     end
 
@@ -71,6 +73,10 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
 
         specify 'selected answers will contain answer "ba"' do
           expect(selected_answers.map(&:word)).to include 'ba'
+        end
+
+        it 'removes selected answer from list of available answers' do
+          expect { select_answers }.to change { simple_crossword_puzzle.available_answers }.to ['bb']
         end
       end
     end

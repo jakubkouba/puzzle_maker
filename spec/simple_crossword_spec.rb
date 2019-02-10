@@ -42,29 +42,13 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
           expect(selected_answers.count).to eq 1
         end
 
-        specify 'selected answers contain just one item which is instance of SelectedAnswer' do
+        specify 'selected answers contain SelectedAnswer' do
           expect(selected_answers.first).to be_an_instance_of PuzzleMaker::SelectedAnswer
         end
 
-        specify 'selected answers contain correct word' do
-          expect(selected_answers.first.word).to eq 'a'
-        end
-
-        specify 'selected answers contain correct word with its length' do
-          expect(selected_answers.first.length).to eq 1
-        end
-
-        specify 'selected answers contain correct word with its matching position' do
-          # matching position is index of letter which fits to the result of puzzle
-          expect(selected_answers.first.matching_position).to eq 1
-        end
-      end
-
-      describe 'list of available answers is ["ba"]' do
-        let(:available_answers) { ['ba'] }
-
-        specify 'matching position is of selected answer is 2' do
-          expect(selected_answers.first.matching_position).to eq 2
+        specify 'SelectedAnswer is initialized with answer "a" and letter of result "a"' do
+          expect(PuzzleMaker::SelectedAnswer).to receive(:new).with('a', 'a')
+          select_answers
         end
       end
 
@@ -116,6 +100,27 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
           expect(width).to eq 1
         end
       end
+
+      describe 'list of answer is [ "aa", "cb"]' do
+        let(:available_answers) { ['aa', 'cb'] }
+
+        xit { is_expected.to eq 3 }
+      end
+    end
+  end
+end
+
+RSpec.describe PuzzleMaker::SelectedAnswer do
+
+  describe '#length' do
+
+    it 'returns length of word' do
+      word = 'abc'
+      matching_letter = ''
+
+      selected_answer = described_class.new(word, matching_letter)
+
+      expect(selected_answer.length).to eq 3
     end
   end
 end

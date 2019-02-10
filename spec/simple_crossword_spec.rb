@@ -101,4 +101,21 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
       end
     end
   end
+
+  describe '#width' do
+    subject(:width) { simple_crossword_puzzle.width }
+
+    describe 'when result is "ab"' do
+      let(:result) { 'ab' }
+
+
+      describe 'list of answers is ["a", "b"]' do
+        let(:available_answers) { ['a', 'b'] }
+
+        specify 'puzzle width is 1' do
+          expect(width).to eq 1
+        end
+      end
+    end
+  end
 end

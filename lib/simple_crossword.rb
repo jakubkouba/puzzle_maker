@@ -33,6 +33,10 @@ module PuzzleMaker
       raise SolutionNotFoundError if result_as_array.count != selected_answers.count
     end
 
+    def width
+      1
+    end
+
     def result_as_array
       result.scan(/\w/)
     end

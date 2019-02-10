@@ -30,7 +30,8 @@ module PuzzleMaker
           @available_answers = available_answers - [answer]
         end
       end
-      @selected_answers
+
+      @selected_answers ||= []
     end
   end
 

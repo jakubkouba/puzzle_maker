@@ -79,6 +79,14 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
           expect { select_answers }.to change { simple_crossword_puzzle.available_answers }.to ['bb']
         end
       end
+
+      describe 'list of available answers is [ "cc"]' do
+        let(:available_answers) { ['cc'] }
+
+        specify 'selected answers are empty' do
+          expect(selected_answers).to eq []
+        end
+      end
     end
   end
 end

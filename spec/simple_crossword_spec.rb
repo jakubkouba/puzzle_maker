@@ -30,34 +30,41 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
       end
     end
 
-    describe 'when result is "a" and list of available answers contains "a"' do
-      let(:available_answers) { ['a'] }
+    describe 'when result is "a"' do
       let(:result) { 'a' }
 
+      describe 'list of available answers is ["a"]' do
+        let(:available_answers) { ['a'] }
 
-      it 'returns list with one SelectedAnswer object' do
-        expect(selected_answers.first).to be_an_instance_of PuzzleMaker::SelectedAnswer
+        specify 'selected answers contain just one item' do
+          expect(selected_answers.count).to eq 1
+        end
+
+        specify 'selected answers contain just one item which is instance of SelectedAnswer' do
+          expect(selected_answers.first).to be_an_instance_of PuzzleMaker::SelectedAnswer
+        end
+
+        specify 'selected answers contain correct word' do
+          expect(selected_answers.first.word).to eq 'a'
+        end
+
+        specify 'selected answers contain correct word with its length' do
+          expect(selected_answers.first.length).to eq 1
+        end
+
+        specify 'selected answers contain correct word with its matching position' do
+          # matching position is index of letter which fits to the result of puzzle
+          expect(selected_answers.first.matching_position).to eq 1
+        end
       end
 
-      it 'returns list with one SelectedAnswer object with property "word" containing "a"' do
-        expect(selected_answers.first.word).to eq 'a'
-      end
+      describe 'list of available answers is ["ba"]' do
+        let(:available_answers) { ['ba'] }
 
-      it 'returns list with one SelectedAnswer object with property "length" containing 1' do
-        expect(selected_answers.first.length).to eq 1
-      end
+        specify 'matching position is of selected answer is 2' do
+          expect(selected_answers.first.matching_position).to eq 2
+        end
 
-      it 'returns list with one SelectedAnswer object with "match_position" containing 1' do
-        expect(selected_answers.first.matching_position).to eq 1
-      end
-    end
-
-    describe 'when result is "a" and list of available answers contains "ba"' do
-      let(:available_answers) { ['ba'] }
-      let(:result) { 'a' }
-
-      specify 'matching position of selected word is 2' do
-        expect(selected_answers.first.matching_position).to eq 2
       end
     end
   end

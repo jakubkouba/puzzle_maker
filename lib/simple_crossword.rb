@@ -18,12 +18,9 @@ module PuzzleMaker
     end
 
     def select_answers
-      if available_answers.empty?
-        @selected_answers = []
-        return @selected_answers
-      end
-
       @selected_answers = []
+      return if available_answers.empty?
+
       result.scan(/\w/).each do |letter_of_result|
         available_answers.each do |answer|
           if matching_position = answer.index(letter_of_result)
@@ -32,9 +29,8 @@ module PuzzleMaker
           end
         end
       end
-
-      selected_answers
     end
+    
   end
 
   class SelectedAnswer

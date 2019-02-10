@@ -55,6 +55,11 @@ module PuzzleMaker
     def length
       @word.length
     end
+
+    def left_offset
+      0
+    end
+
   end
 
   class SolutionNotFoundError < StandardError; end

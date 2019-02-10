@@ -111,16 +111,25 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
 end
 
 RSpec.describe PuzzleMaker::SelectedAnswer do
+  let(:selected_answer) { described_class.new(word, matching_letter) }
 
   describe '#length' do
+    subject(:length) { selected_answer.length }
 
-    it 'returns length of word' do
-      word = 'abc'
-      matching_letter = ''
+    let(:word) { 'abc' }
+    let(:matching_letter) { '' }
 
-      selected_answer = described_class.new(word, matching_letter)
+    it { is_expected.to eq 3 }
+  end
 
-      expect(selected_answer.length).to eq 3
+  describe '#left offset' do
+    subject(:left_offset) { selected_answer.left_offset }
+
+    context 'when word is "a" and matching letter is "a"' do
+      let(:word) { 'a' }
+      let(:matching_letter) { 'a' }
+
+      it { is_expected.to eq 0 }
     end
   end
 end

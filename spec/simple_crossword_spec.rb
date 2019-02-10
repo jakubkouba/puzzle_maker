@@ -80,11 +80,11 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         end
       end
 
-      describe 'list of available answers is [ "cc"]' do
+      describe 'available answers does not provide solution' do
         let(:available_answers) { ['cc'] }
 
-        specify 'selected answers are empty' do
-          expect(selected_answers).to eq []
+        it 'raise an error' do
+          expect { select_answers }.to raise_error PuzzleMaker::SolutionNotFoundError
         end
       end
     end

@@ -29,8 +29,10 @@ module PuzzleMaker
           end
         end
       end
+
+      raise SolutionNotFoundError if result.scan(/\w/).count != selected_answers.count
     end
-    
+
   end
 
   class SelectedAnswer
@@ -46,4 +48,6 @@ module PuzzleMaker
       @word.length
     end
   end
+
+  class SolutionNotFoundError < StandardError; end
 end

@@ -61,7 +61,7 @@ module PuzzleMaker
     end
 
     def right_offset
-      0
+      length - left_offset - 1
     end
 
   end

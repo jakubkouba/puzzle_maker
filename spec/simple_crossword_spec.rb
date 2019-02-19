@@ -113,6 +113,7 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
   end
 
   describe '#to_json' do
+    subject(:json) { simple_crossword_puzzle.generate.to_json }
 
     describe 'result is "a"' do
       let(:result) { 'a' }
@@ -121,7 +122,15 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         let(:available_answers) { ['b'] }
 
         it 'returns empty object' do
-          expect(simple_crossword_puzzle.to_json).to eq '{}'
+          expect(json).to eq '{}'
+        end
+      end
+
+      describe 'list of answers is ["a"]' do
+        let(:available_answers) { ['a'] }
+
+        it 'returns json with height: 1' do
+          expect(json).to eq '{"height":1}'
         end
       end
     end

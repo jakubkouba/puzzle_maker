@@ -44,13 +44,19 @@ module PuzzleMaker
       return {}.to_json if selected_answers.empty?
 
       {
-        height: 1,
-        width: width
+        height: height,
+        width:  width
       }.to_json
     end
 
     def result_letters
       result.scan(/\w/)
+    end
+
+    private
+
+    def height
+      result.length
     end
 
   end

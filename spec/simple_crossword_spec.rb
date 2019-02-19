@@ -148,6 +148,18 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         end
       end
     end
+
+    describe 'result is "ab"' do
+      let(:result) { 'ab' }
+
+      describe 'list of available answers is ["aa"]' do
+        let(:available_answers) { ['a', 'b'] }
+
+        it 'returns json with height: 2' do
+          expect(json).to include({ 'height' => 2 })
+        end
+      end
+    end
   end
 end
 

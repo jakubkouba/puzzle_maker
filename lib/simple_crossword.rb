@@ -31,7 +31,7 @@ module PuzzleMaker
         end
       end
 
-      raise SolutionNotFoundError if result_letters.count != selected_answers.count
+      @selected_answers = [] if result_letters.count != selected_answers.count
     end
 
     def width

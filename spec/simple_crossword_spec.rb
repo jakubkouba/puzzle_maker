@@ -68,7 +68,7 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         let(:available_answers) { ['cc'] }
 
         it 'raise an error' do
-          expect { select_answers }.to raise_error PuzzleMaker::SolutionNotFoundError
+          expect(select_answers).to be_empty
         end
       end
     end

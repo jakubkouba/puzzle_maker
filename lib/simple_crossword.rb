@@ -43,7 +43,10 @@ module PuzzleMaker
     def to_json
       return {}.to_json if selected_answers.empty?
 
-      { height: 1 }.to_json
+      {
+        height: 1,
+        width: 1
+      }.to_json
     end
 
     def result_letters

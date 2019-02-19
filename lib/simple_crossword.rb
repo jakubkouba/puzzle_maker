@@ -1,4 +1,5 @@
 require "puzzle_maker/version"
+require 'json'
 require 'byebug'
 
 module PuzzleMaker
@@ -37,6 +38,10 @@ module PuzzleMaker
       biggest_left_offset = selected_answers.map(&:left_offset).max
       biggest_right_offset = selected_answers.map(&:right_offset).max
       biggest_left_offset + biggest_right_offset + 1
+    end
+
+    def to_json
+      {}.to_json
     end
 
     def result_letters

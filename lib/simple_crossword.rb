@@ -45,7 +45,8 @@ module PuzzleMaker
 
       {
         height: height,
-        width:  width
+        width:  width,
+        selected_answers: ['a']
       }.to_json
     end
 

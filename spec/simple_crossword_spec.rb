@@ -138,6 +138,10 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
         it 'returns json with width: 1' do
           expect(json).to include({ 'width' => 1 })
         end
+
+        it 'returns json with selected answers' do
+          expect(json).to include({ 'selected_answers' => ['a'] })
+        end
       end
 
       describe 'list of available answers is ["ab"]' do
@@ -159,6 +163,7 @@ RSpec.describe PuzzleMaker::SimpleCrossword do
           expect(json).to include({ 'height' => 2 })
         end
       end
+
     end
   end
 end
